@@ -1,0 +1,122 @@
+<%- include('includes/header.ejs') %>
+<body id="page-top">
+    <%- include('includes/nav.ejs') %>
+    <!-- Masthead-->
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+            <!-- Masthead Avatar Image-->
+            <img class="masthead-avatar mb-5" src="assets/img/portfolio/promotion.png" alt="..." />
+            <!-- Masthead Heading-->
+            <h1 class="masthead-heading text-uppercase mb-0">Duyuru Sistemi</h1>
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
+                
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Masthead Subheading-->
+            <p class="masthead-subheading font-weight-light mb-0">Görüntüle-İndir-Paylaş</p>
+        </div>
+    </header>
+    <!-- Portfolio Section-->
+    <section class="page-section portfolio" id="portfolio">
+        <div class="container">
+            <!-- Portfolio Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Duyurular</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Portfolio Grid Items-->
+            <div class="row justify-content-center">
+                <table class="table">
+                    <thead>
+                    <tr style="background-color: rgba(0, 0, 0, 0.858);color: white;">
+                        <th>#</th>
+                        <th>Duyuru Adı</th>
+                        <th>Duyuru</th>
+                        <th>Başlangıç Tarihi</th>
+                        <th>Bitiş Tarihi</th>
+                        <th>İşlemler</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% if(duyurular.length>0) {%>
+                    <%  let sayi1=1; %>
+                    <% for(let duyuru of duyurular) {%>    
+                    <tr>
+                        <th scope="row"><%=sayi1 %></th>
+                        <td><%=duyuru.duyuru_Adi %></td>
+                        <td><%=duyuru.duyuru %></td>
+                        <td><%=duyuru.baslangicTarihi %></td>
+                        <td><%=duyuru.bitisTarihi %></td>
+                        <td>
+                           
+                            
+
+                             <form action="duyuru-sil" method="post" >
+                                
+                                <input type="hidden" name="duyuruId" value='<%=duyuru._id %>'>
+                                <% if(yonetici) {%>
+                                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                <button type="submit" class="btn btn-outline-danger btn-icon" value="1"> 
+                                    <i class="ai-trash">Sil</i>
+                                </button>
+                                <% } %>
+                                 </form>
+                        </td>
+                    </tr>
+                     <% sayi1++; } %>
+                    <% }else { %>
+                    <tr>
+                        <td colspan="6" style="text-align:center; background-color: rgba(255,0,0,0.2);">Duyuru Yok!</td>
+                    </tr>
+            
+                    <% } %>
+            
+                  
+                    
+                   
+                    
+                    </tbody>
+                </table>
+                
+                
+            </div>
+        </div>
+    </section>
+    <!-- About Section-->
+    <section class="page-section bg-primary text-white mb-0" id="about" >
+        <div class="container" >
+            <!-- About Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-white">Hizmetimiz</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light" >
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-dot"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- About Section Content-->
+            <div class="row" >
+                <div class=""><p class="lead" style="text-align: center">Duyuruları pdf halinde indirmek için aşağıdaki butona tıklayınız.</p></div>
+                
+            </div>
+            <!-- About Section Button-->
+
+            <form action="/indir-pdf" method="get" >
+                <div class="text-center mt-4" >            
+                <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                <a class="btn btn-xl btn-outline-light" href="/indir-pdf">
+                    <i class="fas fa-download me-2"></i>
+                    Duyuruları İndir!
+                </a></div>
+                 </form>
+           
+               
+            
+        </div>
+    </section>
+    
+    
+<%- include('includes/footer.ejs') %>

@@ -1,0 +1,50 @@
+<%- include('includes/header.ejs') %>
+<body id="page-top">
+    <%- include('includes/nav.ejs') %>
+    <br><br><br><br><br>
+
+    <section class="page-section" id="contact">
+        <div class="container">
+            <!-- Contact Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Giriş Yap</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Contact Section Form-->
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">
+                  
+                    <form id="contactForm" data-sb-form-api-token="API_TOKEN" novalidate="" method="post" action="/giris">
+                        
+                        <!-- Email address input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="email" type="email" name="eposta" placeholder="name@example.com" data-sb-validations="required,email" />
+                            <label for="email">Eposta</label>
+                            <div class="invalid-feedback" data-sb-feedback="email:required">Burası boş geçilemez.</div>
+                            <div class="invalid-feedback" data-sb-feedback="email:email">Geçersiz Eposta.</div>
+                        </div>
+                        
+                        <!-- password input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="email" type="password" name="sifre" placeholder="password" data-sb-validations="required" />
+                            <label for="email">Şifre</label>
+                            <div class="invalid-feedback" data-sb-feedback="email:required">Burası boş geçilemez.</div>
+                            
+                        </div>
+                       
+                        <div class="d-flex justify-content-end pt-3">
+                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                            
+                            <button class="btn btn-primary ms-3" type="submit" value="1">Giriş Yap</button>
+                          </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <%- include('includes/footer.ejs') %>

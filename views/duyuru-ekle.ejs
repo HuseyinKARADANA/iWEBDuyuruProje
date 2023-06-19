@@ -1,0 +1,65 @@
+<%- include('includes/header.ejs') %>
+<body id="page-top">
+    <%- include('includes/nav.ejs') %>
+    <br><br><br><br><br>
+
+    <section class="page-section" id="contact">
+        <div class="container">
+            <!-- Contact Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Duyuru Ekle</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Contact Section Form-->
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">
+                  
+                    <form id="contactForm" data-sb-form-api-token="API_TOKEN" novalidate="" method="post"  action="/duyuru-ekle">
+                        
+                        
+                        <div class="form-floating mb-3">
+                            <input class="form-control"  type="text"  name="duyuru_Adi" data-sb-validations="required" />
+                            <label for="duyuru_Adi">Duyuru Adı</label>
+                            <div class="invalid-feedback" data-sb-feedback="duyuru_Adi:required">Burası boş geçilemez.</div>
+                            
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input class="form-control"  type="text"  name="duyuru" data-sb-validations="required" />
+                            <label for="duyuru">Açıklama</label>
+                            <div class="invalid-feedback" data-sb-feedback="duyuru:required">Burası boş geçilemez.</div>
+                            
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input class="form-control"  type="datetime-local"  name="baslangicTarihi" data-sb-validations="required" />
+                            <label for="baslangicTarihi">Başlangıç Tarihi</label>
+                            
+                            
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input class="form-control"  type="datetime-local"  name="bitisTarihi" data-sb-validations="required" />
+                            <label for="bitisTarihi">Bitiş Tarihi</label>
+                            
+                            
+                        </div>
+                        
+                       
+
+                        
+                        
+                        <div class="d-flex justify-content-end pt-3" >
+                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                            <button class="btn btn-secondary" type="button" >Vazgeç</button>
+                            <button class="btn btn-primary ms-3" type="submit" value="1">Kaydet</button>
+                          </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('includes/footer.ejs') %>
