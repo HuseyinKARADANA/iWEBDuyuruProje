@@ -2,13 +2,11 @@ const Kullanici = require("../models/kullanici");
 const bcrypt = require('bcryptjs');
 
 exports.getGiris = (req, res, next) => {
-   //     console.log(req.get('Cookie'));
+  
         console.log(req.session);
         res.render("giris", {
           sayfaBasligi: "Yetkili Giriş Paneli",
-          yol: "/giris",
-          
-         
+          yol: "/giris",  
         });
     
 };
@@ -49,10 +47,6 @@ exports.postGiris = (req, res, next) => {
       console.log(err);
       res.redirect('/giris');
     })
-   // req.session.oturum_acildi=true;
-    //res.setHeader("Set-Cookie", "giris_yapti=true")
-
-  
 
 };
 
@@ -104,20 +98,3 @@ exports.getKayit = (req, res, next) => {
     })
 
 };
-
-/**
- * 
- * exports.getKullaniciGiris = (req, res, next) => {
-  res.render("giris", {
-    sayfaBasligi: "Duyuru Sistemi Kullanıcı Girişi",
-    yol: "/giris"
-  });
-};
-
-exports.getKullaniciKayit = (req, res, next) => {
-  res.render("kayit-ol", {
-    sayfaBasligi: "Duyuru Sistemi Kullanıcı Kaydı",
-    yol: "/kayit-ol"
-  });
-};
- */

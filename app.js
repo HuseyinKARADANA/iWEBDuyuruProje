@@ -1,4 +1,3 @@
-require('dotenv').config();
 const http=require('http');
 const express=require('express');
 const path = require("path");
@@ -12,7 +11,7 @@ const csurf=require('csurf');
 const bcrypt = require('bcryptjs');
 const csurfKoruma=csurf();
 
-const MONGODB_URI="mongodb+srv://huseyinkaradana35:1234@cluster1.vgyj7y8.mongodb.net/";
+const MONGODB_URI="mongodb+srv://huseyinkaradana35:1234@cluster1.vgyj7y8.mongodb.net/?retryWrites=true&w=majority";
 
 
 
@@ -53,7 +52,7 @@ app.use(hataController.getHata404);
 mongoose
   .connect(MONGODB_URI)
   .then((result) => {
-    app.listen(process.env.PORT || 3000);
+    app.listen(3000);
   })
   .catch((err) => {
     console.log(err);

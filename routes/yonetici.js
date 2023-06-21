@@ -13,6 +13,5 @@ router.get('/duyuru-ekle', yetkiKontrol, duyuruController.getDuyuruEkle);
 router.post('/duyuru-ekle',yetkiKontrol, duyuruController.postDuyuruEkle);
 
 
-//module.exports = router;
+
 exports.routes=router;
-//exports.urunler=urunler;
